@@ -40,6 +40,7 @@ Navigate to [localhost:3000](http://localhost:3000). The app should be running a
   2. Remarks
   3. Amount
      that displays the data user submitted in debit or credit forms.
+     > - Put red background for debit and green background for credit in the table to differentiate the data.
 - Link to another page when user clicks on date of the table.
   1. User can see the expenses and earnings of that particular date in this page.
 
