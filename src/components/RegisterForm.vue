@@ -27,7 +27,7 @@ async function handleRegister() {
     JSON.stringify({
       username: registerState.username,
       password: hashedPw,
-      transactions: {},
+      transactions: [],
     })
   ); //type:'credit/debit', date, remarks, amount
   alert("User Created");

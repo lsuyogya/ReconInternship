@@ -12,7 +12,13 @@ import { RouterView } from "vue-router";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  /* color: #ffffff; */
+  /* background-color: #2c3e50; */
+  background-color: #c2d9f170;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
+}
+body {
+  margin: 0;
 }
 </style>

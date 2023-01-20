@@ -12,7 +12,7 @@ const isCreditShown = ref(false);
 // onMounted(() => {
 const currentUser = JSON.parse(localStorage.getItem("currentUser")).username;
 const userDetails = JSON.parse(localStorage.getItem(currentUser));
-let userState = reactive(userDetails);
+const userState = reactive(userDetails);
 
 function calculateTotal() {
   let total = 0;
@@ -73,11 +73,16 @@ function handleLogout() {
   <!-- Table isnt dynamically changed -->
   <table>
     <tr class="headers">
+      <!-- <td v-for="key in Object.keys(userState.transactions[0])">{{ key }}</td> -->
       <td>Date</td>
       <td>Remarks</td>
       <td>Amount</td>
     </tr>
-    <tr v-for="transaction in userState.transactions" :class="transaction.type">
+    <tr
+      v-for="(transaction, index) in userState.transactions"
+      :class="transaction.type"
+      :key="index"
+    >
       <td>{{ transaction.date }}</td>
       <td>{{ transaction.remarks }}</td>
       <td>{{ transaction.amount }}</td>
