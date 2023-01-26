@@ -1,19 +1,14 @@
 <script setup>
-import { reactive, ref, createVNode, h } from 'vue';
-import { RouterLink, useRouter } from 'vue-router';
+import { ref, reactive } from 'vue';
 import TransactionForm from './TransactionForm.vue';
-import { NMenu, NIcon, NButtonGroup, NButton } from 'naive-ui';
-import logo from '../assets/logo.png';
-import {
-	PersonFilled as personIcon,
-	LogOutOutlined as logoutIcon,
-} from '@vicons/material';
-
-const router = useRouter();
+import { NButtonGroup, NButton } from 'naive-ui';
+import Nav from './Nav.vue';
+import { useRouter } from 'vue-router';
 
 const totalBalance = ref(0);
 const isDebitShown = ref(false);
 const isCreditShown = ref(false);
+const router = useRouter();
 
 // onMounted(() => {
 const currentUser = JSON.parse(localStorage.getItem('currentUser')).username;
@@ -37,61 +32,16 @@ function handleUpdate(updatedData) {
 	calculateTotal();
 }
 
-function handleLogout() {
-	localStorage.removeItem('currentUser');
-	router.push({ name: 'login' });
-}
 function handleDateClick(e) {
 	router.push({
 		name: 'date-transaction',
 		params: { date: e.target.innerHTML },
 	});
 }
-
-const menuOptions = [
-	{
-		label: () =>
-			createVNode(
-				RouterLink,
-				{ to: { name: 'dashboard' } },
-				{
-					default: () =>
-						createVNode('img', {
-							src: logo,
-							alt: 'Logo',
-							style: 'width: 100px',
-						}),
-					// 'Logo',
-				}
-			),
-		key: 'label',
-	},
-	{
-		label: `${userState.username.toUpperCase()}`,
-		key: 'username',
-		icon: () => createVNode(NIcon, {}, { default: () => h(personIcon) }),
-	},
-	{
-		label: () =>
-			createVNode(
-				'div',
-				{ onClick: handleLogout },
-				{ default: () => 'Logout' }
-			),
-		key: 'logout',
-		icon: () =>
-			createVNode(
-				NIcon,
-				{ onClick: handleLogout },
-				{ default: () => h(logoutIcon) }
-			),
-	},
-];
 </script>
 
 <template>
-	<n-menu class="nav mb-6" mode="horizontal" :options="menuOptions" />
-
+	<Nav :username="userDetails.username"></Nav>
 	<main>
 		<p>
 			<strong>Total balance: {{ totalBalance }}</strong>
@@ -133,7 +83,7 @@ const menuOptions = [
 				</tr>
 				<tr
 					v-for="transaction in userState.transactions"
-					:class="`${transaction.type} hover:brightness-110`"
+					:class="`${transaction.type} hover:brightness-125`"
 				>
 					<td @click="handleDateClick" style="cursor: pointer">
 						{{ transaction.date }}
@@ -165,17 +115,11 @@ tr {
 	// &.Credit,
 	// &.Debit {
 	// 	:hover {
-	// 		// filter: brightness(125%);
+	// 		filter: brightness(125%);
 	// 	}
 	// }
 }
 
-.nav {
-	border-bottom: 1px solid;
-	:last-child {
-		margin-left: auto;
-	}
-}
 .centerChildren {
 	display: grid;
 	place-content: center;

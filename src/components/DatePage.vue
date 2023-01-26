@@ -1,6 +1,7 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import { ref } from 'vue';
+import Nav from './Nav.vue';
 
 const route = useRoute();
 const date = ref(route.params.date);
@@ -13,7 +14,7 @@ const filteredTransactions = transactions.filter((transaction) => {
 </script>
 
 <template>
-	Date: {{ date }}
+	<Nav :username="currentUser" />
 	<div class="centerChildren mt-6">
 		<table class="table-auto">
 			<tr class="headers">

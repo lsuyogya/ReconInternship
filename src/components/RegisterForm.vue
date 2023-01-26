@@ -121,5 +121,6 @@ function addError(err) {
 form {
 	display: grid;
 	place-content: center;
+	grid-row: 1 / span2;
 }
 </style>

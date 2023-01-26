@@ -21,10 +21,13 @@ import { RouterView } from 'vue-router';
 	/* width: 100dvw; */
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 5rem 1fr;
+	grid-template-rows: auto 1fr;
 	place-content: center;
 }
 body {
 	margin: 0;
+}
+button.primary {
+	background-color: #18a058;
 }
 </style>
