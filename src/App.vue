@@ -18,7 +18,10 @@ import { RouterView } from 'vue-router';
 	color: #2c3e50;
 	margin: 0;
 	min-height: 100vh;
+	/* width: 100dvw; */
 	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 5rem 1fr;
 	place-content: center;
 }
 body {
